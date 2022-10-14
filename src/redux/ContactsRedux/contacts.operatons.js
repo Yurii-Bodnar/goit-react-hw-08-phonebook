@@ -2,7 +2,7 @@ import {
   fetchContacts,
   addContactAPI,
   deleteContactAPI,
-} from 'sevices/mockaAPI';
+} from 'sevices/FetchContactsAPI';
 
 const { createAsyncThunk } = require('@reduxjs/toolkit');
 

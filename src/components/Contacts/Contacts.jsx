@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact, getContacts } from 'redux/contacts.operatons';
-import { contactItems, filterItems } from 'redux/contactsSelector';
+import { deleteContact, getContacts } from 'redux/ContactsRedux/contacts.operatons';
+import { contactItems, filterItems } from 'redux/ContactsRedux/contactsSelector';
 
 import css from './Contacts.module.css';
 
@@ -12,8 +12,8 @@ const Contacts = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (contacts.length === 0) dispatch(getContacts());
-  }, [dispatch, contacts]);
+    dispatch(getContacts());
+  }, [dispatch]);
 
   const filterContacts = (contacts, filterState) => {
     return filterState
@@ -25,15 +25,16 @@ const Contacts = () => {
 
   const filteredContacts = filterContacts(contacts, filterState);
   // console.log(filteredContacts);
+  // 
   return (
     <div className={css.container}>
       <ul className={css.list}>
-        {filteredContacts?.map(({ name, id, phone }) => {
+        {filteredContacts?.map(({ name, id, number }) => {
           // console.log(name);
           return (
             <li key={id} className={css.item}>
               <p className={css.text}>
-                {name}: <span>{phone}</span>
+                {name}: <span>{number}</span>
               </p>
               <button
                 className={css.btn}

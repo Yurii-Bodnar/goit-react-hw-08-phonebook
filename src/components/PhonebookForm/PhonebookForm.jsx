@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import css from './PhonebookForm.module.css';
 import Notiflix from 'notiflix';
 // import { fetchContacts } from 'sevices/mockaAPI';
-import { addContact } from 'redux/contacts.operatons';
-import { contactItems } from 'redux/contactsSelector';
+import { addContact } from 'redux/ContactsRedux/contacts.operatons';
+import { contactItems } from 'redux/ContactsRedux/contactsSelector';
 
 const PhonebookForm = () => {
   const [name, setName] = useState('');
@@ -43,7 +43,7 @@ const PhonebookForm = () => {
     ) {
       return Notiflix.Notify.warning(`${name} in already in contacts`);
     }
-    const contact = { name: e.target.name.value, phone: e.target.number.value };
+    const contact = { name: e.target.name.value, number: e.target.number.value };
     // dispatch(addContacts(name,number));
     dispatch(addContact(contact));
     reset();

@@ -1,26 +1,23 @@
-import { NavLink} from 'react-router-dom';
+import { useAuth } from 'hooks/useAuth';
+import { NavLink } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 const Navigation = () => {
-
+  const { isLoggedIn } = useAuth();
   return (
-    <div>
-      <header>
-        <nav>
-        <NavLink to="/" end>
-            Home
-          </NavLink>
-          <NavLink to="/register">
-            Register
-          </NavLink>
-          <NavLink to="/login" >
-            Log in
-          </NavLink>
-          <NavLink to="/contacts" >
+    <nav>
+      <Stack direction="row" sx={{padding: 2}} spacing={2}>
+        <Button component={NavLink} to="/" end  variant="contained">
+          Home
+        </Button>
+        {isLoggedIn && (
+          <Button component={NavLink} to="/contacts" variant="contained">
             Contacts
-          </NavLink>
-        </nav>
-      </header>
-    </div>
+          </Button>
+        )}
+      </Stack>
+    </nav>
   );
 };
 

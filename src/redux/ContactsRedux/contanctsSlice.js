@@ -1,3 +1,4 @@
+// import { logOut } from 'redux/Auth/operations';
 import { addContact, getContacts, deleteContact } from './contacts.operatons';
 
 const { createSlice } = require('@reduxjs/toolkit');
@@ -24,6 +25,8 @@ const contactsSlice = createSlice({
     },
     [getContacts.fulfilled]: (state, { payload }) => {
       return { ...state, isLoading: false, items: payload };
+      // state.isLoading = false;
+      // state.items = [...state.items, payload]
     },
     [getContacts.rejected]: (state, { payload }) => {
       state.isLoading = false;
@@ -40,6 +43,11 @@ const contactsSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
+    // [logOut.fulfilled](state) {
+    //   state.items = [];
+    //   state.error = null;
+    //   state.isLoading = false;
+    // },
   },
 });
 
